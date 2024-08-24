@@ -14,7 +14,7 @@ public class SegmentoReta extends ObjetoGeometrico {
         + Math.pow(p2.getCoordY() - p1.getCoordY(), 2));
     }
 
-    public double  coeficienteAngular() {
+    public double coeficienteAngular() {
         if (p1.getCoordX() == p2.getCoordX()) {
             return Double.POSITIVE_INFINITY;
         }
@@ -22,7 +22,7 @@ public class SegmentoReta extends ObjetoGeometrico {
     }
 
     public boolean paralelo(SegmentoReta s) {
-        return this.coeficienteAngular() == s.coeficienteAngular();
+        return Math.round(Math.abs(this.coeficienteAngular())) == Math.round(Math.abs(s.coeficienteAngular()));
     }
 
     public Ponto getP1() {
@@ -31,5 +31,15 @@ public class SegmentoReta extends ObjetoGeometrico {
 
     public Ponto getP2() {
         return new Ponto(p2.getCoordX(), p2.getCoordY());
+    }
+
+    public double distancia(SegmentoReta s) {
+        if (!this.paralelo(s)) {
+            throw new IllegalArgumentException();
+        }
+        double m = this.coeficienteAngular();
+        double c1 = this.getP1().getCoordY() - m * this.getP1().getCoordX();
+        double c2 = s.getP1().getCoordY() - m * s.getP1().getCoordX();
+        return (Math.abs(c2 - c1))/(Math.sqrt(1 + m*m));
     }
 }

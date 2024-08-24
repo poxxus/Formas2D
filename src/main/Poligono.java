@@ -1,7 +1,7 @@
 package main;
 
 public abstract class Poligono extends FormaGeometrica {
-    private final Ponto[] pontos;
+    protected final Ponto[] pontos;
     public Poligono(Ponto[] pontos) {
         this.pontos = new Ponto[pontos.length];
         System.arraycopy(pontos, 0, this.pontos, 0, pontos.length);
