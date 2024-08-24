@@ -47,4 +47,16 @@ public class Triangulo extends Poligono {
     public SegmentoReta getLado13() {
         return new SegmentoReta(this.lado13.getP1(), this.lado13.getP2());
     }
+
+    public Ponto getP1() {
+        return new Ponto(this.pontos[0].getCoordX(), this.pontos[0].getCoordY());
+    }
+
+    public Ponto getP2() {
+        return new Ponto(this.pontos[1].getCoordX(), this.pontos[1].getCoordY());
+    }
+
+    public Ponto getP3() {
+        return new Ponto(this.pontos[2].getCoordX(), this.pontos[2].getCoordY());
+    }
 }

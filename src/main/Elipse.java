@@ -8,13 +8,16 @@ public class Elipse extends FormaGeometrica {
         this.centro = centro;
         this.semiEixoA = semiEixoA;
         this.semiEixoB = semiEixoB;
+        if (semiEixoA < 0 || semiEixoB < 0) {
+            throw new IllegalArgumentException();
+        }
     }
 
-    double getSemiEixoMenor() {
+    public double getSemiEixoMenor() {
         return Math.min(semiEixoA, semiEixoB);
     }
 
-    double getSemiEixoMaior() {
+    public double getSemiEixoMaior() {
         return Math.max(semiEixoA, semiEixoB);
     }
 

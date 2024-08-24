@@ -1,32 +1,45 @@
 package main;
 
-public class SemiCirculo extends Circulo {
+public class SemiCirculo extends FormaGeometrica {
+    private final Ponto centro;
+    private final double raio;
     public SemiCirculo(Ponto centro, double raio) {
-        super(centro, raio);
+        this.centro = centro;
+        this.raio = raio;
+        if (raio < 0) {
+            throw new IllegalArgumentException();
+        }
     }
 
     @Override
     public double largura() {
-        return super.largura();
+        return 2*raio;
     }
 
     @Override
     public double area() {
-        return super.area()/2;
+        return (Math.PI*this.raio*this.raio)/2;
     }
 
     @Override
     public double altura() {
-        return super.altura()/2;
+        return this.raio;
     }
 
     @Override
     public double perimetro() {
-        return super.perimetro()/2;
+        return (Math.PI * 2 * this.raio)/2;
     }
 
-    @Override
     public double circunferencia() {
-        return super.circunferencia()/2;
+        return this.perimetro();
+    }
+
+    public double getRaio() {
+        return this.raio;
+    }
+
+    public Ponto getCentro() {
+        return new Ponto(this.centro.getCoordX(), this.centro.getCoordY());
     }
 }

@@ -3,6 +3,9 @@ package main;
 public class Circulo extends Elipse {
     public Circulo(Ponto centro, double raio) {
         super(centro, raio, raio);
+        if (raio < 0) {
+            throw new IllegalArgumentException();
+        }
     }
 
     @Override
@@ -28,5 +31,9 @@ public class Circulo extends Elipse {
     @Override
     public double circunferencia() {
         return 2 * Math.PI * this.semiEixoA;
+    }
+
+    public double getRaio() {
+        return semiEixoA;
     }
 }
